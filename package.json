@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
+  "start": "node server.js", 
+  "dev": "nodemon server.js", 
+  "postinstall": "npm rebuild bcrypt --build-from-source && echo 'bcrypt rebuilt successfully'",
+  "test": "echo 'No test specified'"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
