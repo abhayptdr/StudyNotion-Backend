@@ -27,11 +27,22 @@ app.use(cookieParser());
 
 // CORS configuration with optional origin parsing
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN ? JSON.parse(process.env.CORS_ORIGIN) : '*',
+  origin: '*',
   credentials: true,
-  maxAge: 14400,
-};
-app.use(cors(corsOptions));
+  optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
+
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.set('trust proxy', 1);
+
+// const corsOptions = {
+//   origin: process.env.CORS_ORIGIN ? JSON.parse(process.env.CORS_ORIGIN) : '*',
+//   credentials: true,
+//   maxAge: 14400,
+// };
+// app.use(cors(corsOptions));
 
 app.use(
   fileUpload({
